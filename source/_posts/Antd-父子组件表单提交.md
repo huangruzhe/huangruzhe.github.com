@@ -12,47 +12,28 @@ tags:
 配置子组件：<Child ref={React.useRef(null)} />
 
 主要代码如下：
-
+<pre name="code" class="javascript">
 const Child = forwardRef(FormItemTimeShedule);
-
 {getFieldDecorator('scheduleList', {
-
-        validateTrigger: ['onBlur'],
-
-        rules: [
-
-            {
-
-                validator(_, value, callback) {
-
-                    value.some(item => {
-
-                        const errorMessage = childRef.current.getValidateError(item);
-
-                        if (errorMessage) {
-
-                            callback(errorMessage);
-
-                            return true;
-
-                        }
-
-                        return false;
-
-                    });
-
-                    callback();
-
-                }
-
+    validateTrigger: ['onBlur'],
+    rules: [
+        {
+            validator(_, value, callback) {
+                value.some(item => {
+                    const errorMessage = childRef.current.getValidateError(item);
+                    if (errorMessage) {
+                        callback(errorMessage);
+                        return true;
+                    }
+                    return false;
+                });
+                callback();
             }
-
-        ],
-
-        initialValue: relativeLinkData
-
+        }
+    ],
+    initialValue: relativeLinkData
 })(<Child ref={React.useRef(null)} {...itemProps}/>)}
-
+</pre>
 子组件
 =============
 
@@ -63,7 +44,7 @@ const Child = forwardRef(FormItemTimeShedule);
   }))
 
 //执行校验
-
+<pre name="code" class="javascript">
 const getValidateError = item => {
     let msg;
     validators.some(item => {
@@ -75,7 +56,7 @@ const getValidateError = item => {
     });
     return msg;
 };
-
+</pre>
 总结
 =============
 
