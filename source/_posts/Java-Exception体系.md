@@ -10,6 +10,7 @@ tags:
 
 ![throwable](/images/throwable.png)
 主要分不可恢复的Error类，和异常类exception。Exception又分为checked和unchecked Exception，通俗的讲就是分编译器检查异常类和非编译器检查类，Exception的子类除RuntimeException以外都是checked Exception, RuntimeException的子类都是unchecked Exception；
+<!-- more -->
 
 Java Exception 关键字
 =============
