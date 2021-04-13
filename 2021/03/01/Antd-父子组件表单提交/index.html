@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这两天弄了下父子组件提交的问题，这里整理下。 父组件中，引入子组件，对子组件执行React.forwardRef(子组件）来获取传递给它的 ref配置子组件： 主要代码如下： const Child &#x3D; forwardRef(FormItemTimeShedule); {getFieldDecorator(‘scheduleList’, {     validateTrigger: [&#39;o">
+  <meta name="description" content="这两天弄了下父子组件提交的问题，这里整理下。 父组件中，引入子组件，对子组件执行React.forwardRef(子组件）来获取传递给它的 ref配置子组件： 主要代码如下：  const Child &#x3D; forwardRef(FormItemTimeShedule); {getFieldDecorator(&#39;scheduleList&#39;, {     validateTrigger: [&#39;onBl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Antd 父子组件表单提交">
 <meta property="og:url" content="http://example.com/2021/03/01/Antd-%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="这两天弄了下父子组件提交的问题，这里整理下。 父组件中，引入子组件，对子组件执行React.forwardRef(子组件）来获取传递给它的 ref配置子组件： 主要代码如下： const Child &#x3D; forwardRef(FormItemTimeShedule); {getFieldDecorator(‘scheduleList’, {     validateTrigger: [&#39;o">
+<meta property="og:description" content="这两天弄了下父子组件提交的问题，这里整理下。 父组件中，引入子组件，对子组件执行React.forwardRef(子组件）来获取传递给它的 ref配置子组件： 主要代码如下：  const Child &#x3D; forwardRef(FormItemTimeShedule); {getFieldDecorator(&#39;scheduleList&#39;, {     validateTrigger: [&#39;onBl">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-01T08:55:27.000Z">
-<meta property="article:modified_time" content="2021-03-01T10:03:16.504Z">
+<meta property="article:modified_time" content="2021-03-02T03:23:33.373Z">
 <meta property="article:author" content="黄汝哲">
 <meta name="twitter:card" content="summary">
 
@@ -118,6 +118,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -173,10 +178,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-01 16:55:27 / 修改时间：18:03:16" itemprop="dateCreated datePublished" datetime="2021-03-01T16:55:27+08:00">2021-03-01</time>
+              <time title="创建时间：2021-03-01 16:55:27" itemprop="dateCreated datePublished" datetime="2021-03-01T16:55:27+08:00">2021-03-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-02 11:23:33" itemprop="dateModified" datetime="2021-03-02T11:23:33+08:00">2021-03-02</time>
+              </span>
 
           
 
@@ -192,46 +203,43 @@
         <p>这两天弄了下父子组件提交的问题，这里整理下。</p>
 <h1 id="父组件中，引入子组件，对子组件执行React-forwardRef-子组件）来获取传递给它的-ref"><a href="#父组件中，引入子组件，对子组件执行React-forwardRef-子组件）来获取传递给它的-ref" class="headerlink" title="父组件中，引入子组件，对子组件执行React.forwardRef(子组件）来获取传递给它的 ref"></a>父组件中，引入子组件，对子组件执行React.forwardRef(子组件）来获取传递给它的 ref</h1><p>配置子组件：<Child ref={React.useRef(null)} /></p>
 <p>主要代码如下：</p>
-<p>const Child = forwardRef(FormItemTimeShedule);</p>
-<p>{getFieldDecorator(‘scheduleList’, {</p>
-<pre><code>    validateTrigger: [&#39;onBlur&#39;],
-
+<pre name="code" class="javascript">
+const Child = forwardRef(FormItemTimeShedule);
+{getFieldDecorator('scheduleList', {
+    validateTrigger: ['onBlur'],
     rules: [
-
-        &#123;
-
-            validator(_, value, callback) &#123;
-
-                value.some(item =&gt; &#123;
-
+        {
+            validator(_, value, callback) {
+                value.some(item => {
                     const errorMessage = childRef.current.getValidateError(item);
-
-                    if (errorMessage) &#123;
-
+                    if (errorMessage) {
                         callback(errorMessage);
-
                         return true;
-
-                    &#125;
-
+                    }
                     return false;
-
-                &#125;);
-
+                });
                 callback();
-
-            &#125;
-
-        &#125;
-
+            }
+        }
     ],
-
     initialValue: relativeLinkData
-</code></pre>
-<p>})(&lt;Child ref={React.useRef(null)} {…itemProps}/&gt;)}</p>
+})(<Child ref={React.useRef(null)} {...itemProps}/>)}
+</pre>
 <h1 id="子组件"><a href="#子组件" class="headerlink" title="子组件"></a>子组件</h1><p>定义const FormItemTimeShedule = ( props, childRef) =&gt; {….}<br>使用useImperativeHandle定义暴露给父组件的参数；<br>  useImperativeHandle(childRef,()=&gt;(<br>    getValidateError<br>  }))</p>
 <p>//执行校验</p>
-<p>const getValidateError = item =&gt; {<br>    let msg;<br>    validators.some(item =&gt; {<br>        if (!item.validator(startTime)) {<br>            msg = item.message;<br>            return true;<br>        }<br>        return false;<br>    });<br>    return msg;<br>};</p>
+<pre name="code" class="javascript">
+const getValidateError = item => {
+    let msg;
+    validators.some(item => {
+        if (!item.validator(startTime)) {
+            msg = item.message;
+            return true;
+        }
+        return false;
+    });
+    return msg;
+};
+</pre>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>主要还是卡在forwardRef和useImperativeHandle这里，注意React版本是16以上，我是写的函数式组件。</p>
 
     </div>
@@ -251,7 +259,10 @@
     <a href="/2021/01/01/Java-Exception%E4%BD%93%E7%B3%BB/" rel="prev" title="Java Exception体系">
       <i class="fa fa-chevron-left"></i> Java Exception体系
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/09/mysql/" rel="next" title="mysql">
+      mysql <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -324,7 +335,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
