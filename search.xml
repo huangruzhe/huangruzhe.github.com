@@ -61,7 +61,25 @@ const getValidateError = item => {
   <entry>
     <title>deadlock</title>
     <url>/2021/04/13/deadlock/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="操作系统中的死锁问题"><a href="#操作系统中的死锁问题" class="headerlink" title="操作系统中的死锁问题"></a>操作系统中的死锁问题</h1><h1 id="什么是死锁？"><a href="#什么是死锁？" class="headerlink" title="什么是死锁？"></a>什么是死锁？</h1><p>死锁是发生在操作系统中因为一个等待进程（或者线程）持有所需资源导致另外任一进程进入等待状态的一种现象。<br>死锁是多进程中的常见问题，其中多个进程共享一种特定类型的互斥资源，称为软件锁。</p>
+<a id="more"></a>
+
+
+<p>在这个教程中，你将学会到以下内容：</p>
+<p>1、什么是死锁？<br>2、死锁举例<br>3、什么是循环等待？<br>4、死锁检测<br>5、防止死锁<br>6、避免死锁<br>7、饥饿与死锁之间的区别</p>
+<h1 id="死锁举例"><a href="#死锁举例" class="headerlink" title="死锁举例"></a>死锁举例</h1><p>真实案例是单行道的交通；<br>这里用桥作为一个资源；<br>所有，当死锁发生时，如果有一辆汽车退出就很快解决；<br>当死锁发生时，很可能多辆汽车都会堵塞住；<br>所以饥饿就可能发生；<br><img src="/images/deadlock.png" alt="throwable"></p>
+<h1 id="什么是循环等待？"><a href="#什么是循环等待？" class="headerlink" title="什么是循环等待？"></a>什么是循环等待？</h1><p>第一个进程正在等待第二个进程持有的资源，第二个进程也在等待第三个进程等持有的资源。这将一直持续到最后一个进程正在等待第一个进程持有的资源为止。这将创建一个循环链。<br>例如，进程A在请求资源A时被分配了资源B。以同样的方式，进程B被分配了资源A并正在请求资源B。这将创建一个循环等待环。</p>
+<h1 id="死锁检测"><a href="#死锁检测" class="headerlink" title="死锁检测"></a>死锁检测</h1><p>资源调度程序可以检测到发生死锁。资源调度程序可帮助OS跟踪分配给不同进程的所有资源。因此，当检测到死锁时，可以使用以下给出的方法解决死锁：</p>
+<h1 id="1、防止死锁"><a href="#1、防止死锁" class="headerlink" title="1、防止死锁"></a>1、防止死锁</h1><p>提前防止死锁发生，这一点很重要。在执行每个事务之前都会对其进行检查，以确保它不会导致死锁情况。否则，即使很小的变化都会发生死锁。</p>
+<h1 id="2、不提前释放资源"><a href="#2、不提前释放资源" class="headerlink" title="2、不提前释放资源"></a>2、不提前释放资源</h1><p>只有当进程完成任务后，才能被该进程自愿释放掉</p>
+<h1 id="3、互斥锁"><a href="#3、互斥锁" class="headerlink" title="3、互斥锁:"></a>3、互斥锁:</h1><p>互斥锁是互斥体的完整形式</p>
+<h1 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h1><p>最好能避免死锁，而不要在死锁发生后立即采取措施。它需要其他信息，例如应如何使用资源。避免死锁最简单，最有用的模型是每个进程声明其可能需要的每种类型的最大资源数。</p>
+<h1 id="回避算法"><a href="#回避算法" class="headerlink" title="回避算法"></a>回避算法</h1><p>避免死锁算法可帮助您动态评估资源分配状态，这样就永远不会出现循环等待的情况。</p>
+<p>单例资源类型<br>使用资源分配图谱<br>使用资源分配图谱对避免死锁是十分必要的<br>多例资源类型<br>循环对死锁是充分不必要条件<br>使用银行家算法</p>
+<h1 id="饥饿与死锁之间的区别"><a href="#饥饿与死锁之间的区别" class="headerlink" title="饥饿与死锁之间的区别"></a>饥饿与死锁之间的区别</h1><p><img src="/images/starvationAndDeadlock.png" alt="throwable"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>多线程和进程中常常会出现死锁，了解什么是死锁，死锁现象，怎么解决死锁，是这篇文章提供给大家的。</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://www.guru99.com/deadlock-in-operating-system.html">https://www.guru99.com/deadlock-in-operating-system.html</a></p>
+]]></content>
   </entry>
   <entry>
     <title>mysql</title>
