@@ -82,4 +82,4 @@ R/W比较小，频繁更新大字段
 
 Mysql 执行顺序
 ==========
-![throwable](https://img2020.cnblogs.com/blog/1066538/202010/1066538-20201016015745814-1815633939.png)
+![Throw](/images/mysql-process.png)
